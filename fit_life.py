@@ -21,7 +21,7 @@ def display_results(user_name, user_age, bmi, water_needed):
         f"Your age: {user_age} years\n"
         f"Your body mass index (BMI): {bmi:.1f}\n"
         f"Recommended daily water intake: {water_needed:.2f} l\n"
-        f"Calculation complete. Stay healthy!"
+        f"Calculation complete. Stay healthy!",
     )
 
 
