@@ -2,6 +2,7 @@ import time
 
 WATER_PER_KG_ML = 30
 ML_IN_LITER = 1000
+DELAY_SECONDS = 0.2
 
 
 def calc_bmi(user_weight, user_height):
@@ -21,7 +22,7 @@ def display_results(user_name, user_age, bmi, water_needed):
         f"Your age: {user_age} years\n"
         f"Your body mass index (BMI): {bmi:.1f}\n"
         f"Recommended daily water intake: {water_needed:.2f} l\n"
-        f"Calculation complete. Stay healthy!",
+        "Calculation complete. Stay healthy!",
     )
 
 
@@ -31,36 +32,32 @@ def main():
 
     user_name = input("Hi, what is your name? ")
 
-    while True:
-        try:
-            user_age = int(input("Please enter your age: "))
-            break
-        except ValueError:
-            print("Please enter a valid age (number).")
+    try:
+        user_age = int(input("Please enter your age: "))
+    except ValueError:
+        print("Please enter a valid age (number).")
+        return
 
-    while True:
-        try:
-            user_weight = float(input("Please enter your weight in kg: "))
-            break
-        except ValueError:
-            print("Please enter a valid weight (e.g., 70.5).")
+    try:
+        user_weight = float(input("Please enter your weight in kg: "))
+    except ValueError:
+        print("Please enter a valid weight (e.g., 70.5).")
+        return
 
-    while True:
-        try:
-            user_height = float(input("Please enter your height in meters: "))
-            break
-        except ValueError:
-            print("Please enter a valid height (e.g., 1.75).")
+    try:
+        user_height = float(input("Please enter your height in meters: "))
+    except ValueError:
+        print("Please enter a valid height (e.g., 1.75).")
+        return
 
     bmi = calc_bmi(user_weight, user_height)
     water_needed = calc_water_needed(user_weight)
 
-    print()
     print(
-        "Thank you! " "Calculating BMI and water intake...",
+        "Thank you! Calculating BMI and water intake...",
         end="\n\n",
     )
-    time.sleep(0.2)
+    time.sleep(DELAY_SECONDS)
     display_results(user_name, user_age, bmi, water_needed)
 
 
